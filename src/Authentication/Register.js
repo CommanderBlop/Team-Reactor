@@ -1,3 +1,4 @@
+
 import React, { useContext } from "react";
 import './login.css';
 import FirebaseContext from '../Firebase'
@@ -41,6 +42,7 @@ function Register(props) {
         </Formik>
 
 
+
       </div>
     </div>
 
@@ -48,3 +50,4 @@ function Register(props) {
 }
 
 export default Register;
+
