@@ -17,12 +17,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loadingAuthState, setLoadingAuthState] = useState(true);
 
+      console.log('reached')
 
   useEffect(() => {
     //Run only on mount
     firebase.auth.onAuthStateChanged((user) => {
       if(user){
         setUser(user);
+        console.log('user set')
       }else{
         setUser(null)
         setLoadingAuthState(false)

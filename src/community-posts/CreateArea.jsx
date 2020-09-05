@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+import Button from 'react-bootstrap/Button';
+
+
 function CreateArea(props) {
   const [note, setNote] = useState({
-    title: "",
     content: ""
   });
 
@@ -19,8 +21,8 @@ function CreateArea(props) {
 
   function submitNote(event) {
     props.onAdd(note);
+    //save note
     setNote({
-      title: "",
       content: ""
     });
     event.preventDefault();
@@ -38,7 +40,7 @@ function CreateArea(props) {
           rows="3"
         />
         <br/>
-        <button onClick={submitNote}>Comment</button>
+        <Button className="sub-but" onClick={submitNote}>+</Button>
       </form>
     </div>
   );

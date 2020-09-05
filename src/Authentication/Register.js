@@ -16,14 +16,17 @@ function Register(props) {
       <div className="form">
 
         <Formik
-          initialValues={{ username: '', password: '' }}
+          initialValues={{ name: '', username: '', password: '',  insta: '', snap: ''}}
           onSubmit={async (values, { setSubmitting }) => {
             try {
               const res = await firebase.auth.createUserWithEmailAndPassword(values.email, values.password)
               await res.user.updateProfile({ displayName: values.name })
               const user = res.user
-              firebase.db.collection("students").doc(user.uid).set({
-                  hello: 'hi'
+              firebase.db.collection("user").doc(user.uid).set({
+                  name: values.name, 
+                  friends: [], 
+                  insta: values.insta, 
+                  snap: values.snap
               })
               alert('Signup successful')
               history.push('/')
@@ -36,6 +39,8 @@ function Register(props) {
             <Field as="input" type="text" placeholder="name" name="name" />
             <Field as="input" type="email" placeholder="email" name="email" />
             <Field as="input" type="password" placeholder="password" name="password" />
+            <Field as="input" type="text" placeholder="instagram (optional)" name="insta" />
+            <Field as="input" type="text" placeholder="snapchat (optional)" name="snap" />
             <button type="submit">Sign Up</button>
             <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
           </Form>
