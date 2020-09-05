@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import {useHistory, Link} from 'react-router-dom'
 import FirebaseContext from '../Firebase'
 const API_KEY = "7d667341"
 
@@ -33,7 +34,7 @@ const API_KEY = "7d667341"
 // }
 
 function MovieFinder() {
- 
+    const history = useHistory()
     const [dataSet, setDataSet] = useState(
         {movieName: '',
         upload: false,
@@ -89,11 +90,10 @@ function MovieFinder() {
             <form>
                 <input type="text" placeholder="Add another movie" onChange = {nameInput} />
             </form>
-            
+            <button onClick = {() => {history.push('/MovieCollection')}}>Back to collection</button>
             <button onClick = {handleSearch}>Click to search</button>
             <button onClick = {submit}>Add to your collection!</button>
             <br/>
-            
             <p style={{visibility: dataSet.response ? "visible" : "hidden"}, {textAlign: 'left'}}>
                 <img src = {dataSet.img} ></img>
                 <h1>{dataSet.response && dataSet.title}</h1>

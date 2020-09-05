@@ -15,6 +15,8 @@ import Register from './Authentication/Register'
 import Friends from './Friends'
 import Post from './Post'
 import ShowPost from './ShowPost/ShowPost'
+import AddMovie from './MovieCollection/addMovie'
+import MovieFinder from './MovieCollection/addMovie';
 
 
 function App() {
@@ -42,7 +44,7 @@ function App() {
               <Post/>
             </Route>
 
-            <Route path="/myCollection">
+            <Route path="/MovieCollection">
               <MovieCollection />
             </Route>
 
@@ -65,7 +67,7 @@ function App() {
             </Route>
 
             <Route path="/addMovie">
-              <AddMovie/>
+              <MovieFinder/>
             </Route>
 
 

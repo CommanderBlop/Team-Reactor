@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import FirebaseContext from '../Firebase'
 import {useHistory, Link} from 'react-router-dom'
-import MovieFinder from './AddMovie'
+import MovieFinder from './addMovie'
 
 const API_KEY = "7d667341"
 
@@ -23,11 +23,10 @@ function MovieCollection() {
                 setUserMovieList(['']);
             }
             setTriggerNext(1)
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        })
-    } ,[]
-        
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            })
+        } ,[]
     )
     
     //const [userMovieList, setUserMovieList] = firetbase.db.collection("movieTester").doc("testUser")
@@ -57,6 +56,7 @@ function MovieCollection() {
     let genre
     let director
     let plot
+    let img
     
     //extract needed info
     if(userMovieList != ['']) {
@@ -64,6 +64,7 @@ function MovieCollection() {
          genre = omdbData === 'Loading...' || omdbData.Genre === undefined? '' : "Genre: " + omdbData.Genre
          director = omdbData === 'Loading...' || omdbData.Director === undefined? '' : "Director: " + omdbData.Director
          plot = omdbData === 'Loading...' || omdbData.Plot === undefined ? '' : omdbData.Plot
+         img = omdbData === 'Loading...' ? omdbData : omdbData.Poster
     } else {
          title = "Your collection is empty"
          genre = ''
@@ -96,9 +97,10 @@ function MovieCollection() {
             <button onClick = {() => {history.push('/')}}>Back</button>
             <button onClick = {() =>buttonClick(-1)}>{'<'}</button>
             <button onClick = {() => buttonClick(1)}>{'>'}</button>
-            <button onClick = {() => {history.push('/AddMovie')}}>To Search</button>
+            <button onClick = {() => {history.push('/addMovie')}}>To Search</button>
             
             <div>
+                <img src = {img} ></img>
                 <h1>{title}</h1>
                 <h3>{genre}</h3>
                 <h3>{director}</h3>
