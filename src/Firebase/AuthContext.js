@@ -2,12 +2,21 @@ import React, { useEffect, useState, useContext } from "react";
 
 import FirebaseContext from "./index";
 
+//typescript stuff (use as doccumentaiton)
+// type ContextProps = {
+//     user: firebase.User | null;
+//     isAuthenticated: boolean;
+//     setUser: any;
+//     isLoadingAuthState: boolean;
+// };
 
 const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
   const firebase = useContext(FirebaseContext)
   const [user, setUser] = useState(null);
+  const [loadingAuthState, setLoadingAuthState] = useState(true);
+
 
   useEffect(() => {
     //Run only on mount
@@ -16,6 +25,7 @@ export const AuthProvider = ({ children }) => {
         setUser(user);
       }else{
         setUser(null)
+        setLoadingAuthState(false)
       }
 
     });
@@ -28,6 +38,7 @@ export const AuthProvider = ({ children }) => {
         user: user,
         isAuthenticated: user !== null && typeof user !== 'undefined',
         setUser: setUser,
+        isLoadingAuthState: loadingAuthState,
       }}
     >
 

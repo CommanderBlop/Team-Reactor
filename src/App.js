@@ -7,6 +7,8 @@ import NavBar from './NavBar'
 import Home from './community-posts/home'
 import MovieCollection from "./MovieCollection"
 import Login from "./Authentication/login"
+import Register from './Authentication/Register'
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Router>
           <NavBar />
           <Switch>
+
 
             <Route path="/myCollection">
               <MovieCollection />
@@ -30,6 +33,10 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+    <Route path="/register">
+              <Register/>
+            </Route>
+
 
             <Route path="/">
               <h1>Home Page: Team Recator</h1>
