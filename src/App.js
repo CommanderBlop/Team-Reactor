@@ -28,6 +28,9 @@ import {
 import FirebaseContext from './Firebase'
 import NavBar from './NavBar'
 
+import Home from './community-posts/home'
+
+
 function App() {
   return (
     <div className="App">
