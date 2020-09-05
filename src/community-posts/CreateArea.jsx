@@ -30,9 +30,10 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form>
+      <form className="all-form">
 
         <textarea
+          className="form-textarea"
           name="content"
           onChange={handleChange}
           value={note.content}
@@ -40,7 +41,7 @@ function CreateArea(props) {
           rows="3"
         />
         <br/>
-        <Button className="sub-but" onClick={submitNote}>+</Button>
+        <Button className="sub-but form-button" onClick={submitNote}>+</Button>
       </form>
     </div>
   );

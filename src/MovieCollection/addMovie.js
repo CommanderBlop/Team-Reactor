@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import FirebaseContext from '../Firebase'
+import { Card, Button, Collapse,ListGroup,ListGroupItem } from 'react-bootstrap'
+import "./collection.css"
+
 const API_KEY = "7d667341"
 
 // function FindMovie(movieName, releaseYear) {
 //     //find the movie
 //     fetch("http://www.omdbapi.com/?t=" + movieName + "&y=" + releaseYear + "&apikey=" + API_KEY)
-//             .then(response => 
+//             .then(response =>
 //                 response.json())
 
 //             .then(data => {
@@ -110,22 +113,57 @@ function MovieFinder() {
         }
     }
 
+    // <p style={{ visibility: dataSet.response ? "visible" : "hidden" }, { textAlign: 'left' }}>
+    //                 <img src={dataSet.img} ></img>
+    //                 <h1>{dataSet.response && dataSet.title}</h1>
+    //                 {dataSet.response && "Year: " + dataSet.year}<br />
+    //                 {dataSet.response && "Length: " + dataSet.length}<br />
+    //                 {dataSet.response && "Director: " + dataSet.director}<br />
+    //                 {dataSet.response && "Genre: " + dataSet.genre}<br />
+    //                 {dataSet.response && dataSet.plot}<br />
+    //             </p>
+
+
     return (
         <div>
-            <input type="text" placeholder="Add another movie" onChange={nameInput} style={{ width: 500, height: 100, fontSize: 50 }} onKeyUp={enterPressed} /><br />
-            <button onClick={() => { history.push('/MovieCollection') }}>Back to collection</button>
-            <button onClick={handleSearch}>Search</button>
-            <button onClick={submit}>Add to your collection!</button>
+            <Card className="text-center" >
+                <Card.Header>Search:</Card.Header>
+
+                <Card.Body>
+
+                  <Card.Text >
+                    <input className="form-control form-control-lg center-item" type="text" placeholder="Add another movie" onChange={nameInput} style={{ width: 500, height: 100, fontSize: 50 }} onKeyUp={enterPressed} /><br />
+                  </Card.Text>
+
+                  <Button className="collection-but" onClick={() => { history.push('/MovieCollection') }}>Back to collection</Button>
+                  <Button className="collection-but" onClick={handleSearch}>Search</Button>
+                  <Button className="collection-but" onClick={submit}>Add to your collection!</Button>
+
+                </Card.Body>
+
+            </Card>
             <br />
-            <p style={{ visibility: dataSet.response ? "visible" : "hidden" }, { textAlign: 'left' }}>
-                <img src={dataSet.img} ></img>
-                <h1>{dataSet.response && dataSet.title}</h1>
-                {dataSet.response && "Year: " + dataSet.year}<br />
-                {dataSet.response && "Length: " + dataSet.length}<br />
-                {dataSet.response && "Director: " + dataSet.director}<br />
-                {dataSet.response && "Genre: " + dataSet.genre}<br />
-                {dataSet.response && dataSet.plot}<br />
-            </p>
+
+                <div className="card-group" style={{ width: dataSet.response ? "38rem" : "0rem" }}>
+
+                  <div className="card" >
+                    <img className="card-img-top" src={dataSet.img}></img>
+                  </div>
+                  <div className="card" style={{ textAlign: 'left' }}>
+                    <div className="card-body">
+                      <h5 className="card-title">{dataSet.response && dataSet.title}</h5>
+                      <p className="card-text">{dataSet.response && "Year: " + dataSet.year}</p>
+                      <p className="card-text">{dataSet.response && "Length: " + dataSet.length}</p>
+                      <p className="card-text">{dataSet.response && "Director: " + dataSet.director}</p>
+
+                      <p className="card-text">{dataSet.response && "Genre: " + dataSet.genre}</p>
+                      <p className="card-text">{dataSet.response && dataSet.plot}</p>
+
+                    </div>
+                  </div>
+
+                </div>
+
 
         </div>
     )

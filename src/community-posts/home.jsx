@@ -75,8 +75,7 @@ function Home(props) {
 
   return (
     <div className="dis-div">
-      <h1>Movie Title</h1>
-      <p>content of the community post</p>
+      <h1>Community Post</h1>
 
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {

@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.Post-div{
+  font-family: "Roboto", sans-serif;
+  width: 20%;
+  margin: 0 auto;
+  text-align: left;
+}
