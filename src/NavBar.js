@@ -19,6 +19,7 @@ function NavBar() {
                         <Nav.Link as={Link} to="/rec">Daily Rec</Nav.Link>
                         <Nav.Link as={Link} to="/community">Community</Nav.Link>
                         <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
+                        <Nav.Link as={Link} to="/myCollection">My Collection</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/login">Log in</Nav.Link>
