@@ -8,19 +8,19 @@ import {
   Link
 } from "react-router-dom"
 import FirebaseContext from './Firebase'
+import NavBar from './NavBar'
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <div>
-        <Switch>
-          <Route path="/">
-            <h1>Home Page: Team Recator</h1>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <NavBar />
+          <Switch>
+            <Route path="/">
+              <h1>Home Page: Team Recator</h1>
+            </Route>
+          </Switch>
+      </Router>
     </div>
   );
 }
