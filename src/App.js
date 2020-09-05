@@ -30,13 +30,13 @@ function App() {
             <Route path="/rec"></Route>
 
             <Route path="/community">
-              <Home />
+              <Home id="text-main"/>
             </Route>
 
             <Route path="/login">
               <Login />
             </Route>
-    <Route path="/register">
+                <Route path="/register">
               <Register/>
             </Route>
 
@@ -44,7 +44,7 @@ function App() {
             <Route path="/">
               <h1>Home Page: Team Recator</h1>
             </Route>
-            
+
           </Switch>
       </Router>
     </div>
