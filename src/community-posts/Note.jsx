@@ -1,4 +1,6 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
+
 
 function Note(props) {
   function handleClick() {
@@ -7,9 +9,7 @@ function Note(props) {
 
   return (
     <div className="note">
-      <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button onClick={handleClick}>Delete</button>
     </div>
   );
 }

@@ -25,10 +25,12 @@ const config = {
 
 const Firebase = {
 	app: firebase.initializeApp(config),
+	fb: firebase,
 	auth: firebase.auth(),
 	db: firebase.firestore(),
 	storage: firebase.storage().ref(),
 };
+
 export default Firebase;
 
 // let Firebase = app.initializeApp(config);
