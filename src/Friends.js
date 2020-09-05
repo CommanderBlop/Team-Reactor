@@ -29,9 +29,10 @@ function Friends() {
             }).then(function () {
                 friendList.forEach((friend, index) => {
                     firebase.db.collection('user').doc(friend).get().then(function (doc) {
-                        setFriends(friendsBuilder.concat(doc.data()))
+                        friendsBuilder.push(doc.data())
                     })
                 })
+                setFriends(friendsBuilder)
                 setLoading(false)
             }
             )
