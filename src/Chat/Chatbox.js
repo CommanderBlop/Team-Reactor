@@ -60,7 +60,7 @@ function Chatbox() {
 
 	return (
 		<div>
-			<Title imgUrl='' userName='Sally' />
+			<Title imgUrl='' userName='Jack' />
 			{isLoading ? (
 				<p>is loading...</p>
 			) : (

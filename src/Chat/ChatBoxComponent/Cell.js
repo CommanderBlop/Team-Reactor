@@ -3,8 +3,10 @@ import React from 'react';
 function Cell(props) {
 	return (
 		<div>
-			<img src={props.Avatar} />
-			<h3>{props.sender}</h3>
+			<div>
+				<img src={props.Avatar} alt='Avatar' />
+				<h4>{props.sender}</h4>
+			</div>
 			<p>{props.message}</p>
 		</div>
 	);

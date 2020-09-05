@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import ChatBox from './Chat/Chatbox';
+
 ReactDOM.render(
 	<React.StrictMode>
 		<App />
+		<ChatBox />
 	</React.StrictMode>,
 	document.getElementById('root')
 );
