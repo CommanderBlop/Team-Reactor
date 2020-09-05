@@ -72,7 +72,7 @@ function App() {
 
 
             <Route path="/">
-              <h1>Home Page: Team Recator</h1>
+              <h1>Home Page: Team Reactor</h1>
             </Route>
 
           </Switch>

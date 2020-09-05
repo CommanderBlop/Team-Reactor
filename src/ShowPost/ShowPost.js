@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { Card } from 'react-bootstrap'
 import PostCard from './PostCard'
+import AddFriendModal from '../AddFriendModal'
 
 function ShowPost() {
     const firebase = useContext(FirebaseContext)
@@ -64,6 +65,7 @@ function ShowPost() {
     return (
         <>
             <p>{localDisplay}</p>
+            {/* <AddFriendModal id="5gd1zjFxT8a49wVFXIER3LkKfck2"/> */}
         </>
     )
 }
