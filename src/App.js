@@ -13,7 +13,8 @@ import MovieCollection from "./MovieCollection"
 import Login from "./Authentication/login"
 import Register from './Authentication/Register'
 import Friends from './Friends'
-
+import Post from './Post'
+import ShowPost from './ShowPost/ShowPost'
 
 function App() {
   return (
@@ -21,7 +22,12 @@ function App() {
       <Router>
           <NavBar />
           <Switch>
-
+            <Route path="/showPost">
+              <ShowPost/>
+            </Route>
+            <Route path="/post">
+              <Post/>
+            </Route>
 
             <Route path="/myCollection">
               <MovieCollection />

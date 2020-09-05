@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function NavBar() {
     let history = useHistory()
     let firebase = useContext(FirebaseContext)
-    console.log(firebase.auth.currentUser)
+    // console.log(firebase.auth.currentUser)
     const [user, setUser] = useState(null)
 
     firebase.auth.onAuthStateChanged(user => {
@@ -33,6 +33,8 @@ function NavBar() {
                         <Nav.Link as={Link} to="/community">Community</Nav.Link>
                         <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
                         <Nav.Link as={Link} to="/myCollection">My Collection</Nav.Link>
+                        <Nav.Link as={Link} to="/post">Post</Nav.Link>
+                        <Nav.Link as={Link} to="/showPost">View Posts</Nav.Link>
                     </Nav>
                     <Nav>
                         {user ? 
