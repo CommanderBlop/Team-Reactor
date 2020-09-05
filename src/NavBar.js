@@ -37,11 +37,12 @@ function NavBar() {
                         <Nav.Link as={Link} to="/showPost">View Posts</Nav.Link>
                     </Nav>
                     <Nav>
-                        {user ? 
-                        <NavDropdown title={user.displayName}>
-                            <NavDropdown.Item as={Link} to="/login">Switch account</NavDropdown.Item>
-                        </NavDropdown>
-                         : <Nav.Link as={Link} to="/login">Log in</Nav.Link>}
+                        {user ?
+                            <NavDropdown title={user.displayName}>
+                                <NavDropdown.Item as={Link} to="/genre">Update genre</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/login">Switch account</NavDropdown.Item>
+                            </NavDropdown>
+                            : <Nav.Link as={Link} to="/login">Log in</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

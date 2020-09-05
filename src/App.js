@@ -17,7 +17,7 @@ import Post from './Post'
 import ShowPost from './ShowPost/ShowPost'
 import AddMovie from './MovieCollection/addMovie'
 import MovieFinder from './MovieCollection/addMovie';
-
+import Genre from './Genre'
 
 function App() {
   // const firebase = useContext(FirebaseContext)
@@ -36,7 +36,9 @@ function App() {
       <Router>
           <NavBar />
           <Switch>
-
+            <Route path="/genre">
+              <Genre/>
+            </Route>
             <Route path="/showPost">
               <ShowPost/>
             </Route>

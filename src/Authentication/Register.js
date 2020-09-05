@@ -26,10 +26,11 @@ function Register(props) {
                   name: values.name, 
                   friends: [], 
                   insta: values.insta, 
-                  snap: values.snap
+                  snap: values.snap, 
+                  genres: [], 
               })
               alert('Signup successful')
-              history.push('/')
+              history.push('/genre')
           } catch (err) {
               alert(err)
           }
