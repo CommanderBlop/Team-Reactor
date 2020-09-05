@@ -5,14 +5,14 @@ import React, {useState, useEffect} from 'react'
 function MovieCollection() {
     //const userGenreList = ['romantic', 'adventure', 'sci-fi', 'suspense', 'anime']
 
-
+    const API_KEY = "7d667341"
     //get user movie collection and put it here
     let userMovieList = ['tt4566758','tt6723592','tt8946378']
     const [counter, setCounter] = useState(0)
     const [omdbData, setOmdbData] = useState('Loading')
     const [triggerNext, setTriggerNext] = useState(0)
     //let textToBeDisplayed = userGenreList[Math.round(Math.random() * userGenreList.length)]
-    let url = "http://www.omdbapi.com/?i=" + userMovieList[counter].toString() + "&apikey=906b7c64"
+    let url = "http://www.omdbapi.com/?i=" + userMovieList[counter].toString() + "&apikey=" + API_KEY
 
     //fetch data
     useEffect(() => {
