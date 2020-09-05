@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import './login.css';
 import FirebaseContext from '../Firebase'
+import AuthContext from '../Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 
@@ -17,8 +18,8 @@ import { Formik, Form, Field } from 'formik'
 function Login(props) {
   const history = useHistory()
   const firebase = useContext(FirebaseContext)
-  
-
+  const authContext = useContext(AuthContext)
+  // console.log(firebase.auth.currentUser)
 
   return (
 
