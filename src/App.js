@@ -9,6 +9,9 @@ import {
 } from "react-router-dom"
 import FirebaseContext from './Firebase'
 
+import Home from './community-posts/home'
+
+
 function App() {
   return (
     <div className="App">
