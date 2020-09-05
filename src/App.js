@@ -17,9 +17,8 @@ import Post from './Post'
 import ShowPost from './ShowPost/ShowPost'
 import AddMovie from './MovieCollection/addMovie'
 import MovieFinder from './MovieCollection/addMovie';
-import DailyRec from './DailyRec'
 import Genre from './Genre'
-
+import DailyRec from './DailyRec';
 
 function App() {
   // const firebase = useContext(FirebaseContext)
@@ -57,9 +56,8 @@ function App() {
             </Route>
 
             <Route path="/DailyRec">
-              <DailyRec userGenre = "Family" />
+              <DailyRec userGenre="family"></DailyRec>
             </Route>
-
 
             <Route path="/community">
               <Home id="text-main"/>
@@ -80,7 +78,6 @@ function App() {
 
             <Route path="/">
               <h1>Home Page: Team Reactor</h1>
-              <DailyRec userGenre = "Family"/>
             </Route>
 
           </Switch>
