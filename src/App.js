@@ -18,6 +18,7 @@ import ShowPost from './ShowPost/ShowPost'
 import AddMovie from './MovieCollection/addMovie'
 import MovieFinder from './MovieCollection/addMovie';
 import DailyRec from './DailyRec'
+import Genre from './Genre'
 
 
 function App() {
@@ -37,7 +38,9 @@ function App() {
       <Router>
           <NavBar />
           <Switch>
-
+            <Route path="/genre">
+              <Genre/>
+            </Route>
             <Route path="/showPost">
               <ShowPost/>
             </Route>
