@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { Card, Button, Collapse } from 'react-bootstrap'
 import AddFriendModal from '../AddFriendModal'
+import "./ShowPostStyle.css"
 
 function PostCard(props) {
     const [open, setOpen] = useState(false)
@@ -22,7 +23,7 @@ function PostCard(props) {
     })
 
     return (
-        <>
+        <div className="PostCard">
             <Card>
                 <Card.Header>
                     <Card.Title onClick={() => {
@@ -35,14 +36,16 @@ function PostCard(props) {
                     <Button onClick={() => setOpen(!open)}
                         aria-expanded={open}>
                         {props.comments.length} comments
-                </Button>
+                    </Button>
 
                 </Card.Header>
+
                 <Collapse in={open}>
                     <div>
                         <Card.Body>
                             {localDisplay}
                         </Card.Body>
+
                         <Card.Footer>
                             <Formik
                                 initialValues={{ comment: '' }}
@@ -55,9 +58,14 @@ function PostCard(props) {
                                     ).catch(error => alert(error))
                                 }}
                             >
-                                <Form>
-                                    <Field as="input" placeholder="say something..." name="comment" />
-                                    <Button type="submit">Comment</Button>
+                                <Form className="form-inline ">
+
+                                      <div className="form-group mb-4">
+                                        <Field className="form-control-plaintext com-input" as="input" placeholder="say something..." name="comment" />
+                                        <Button type="submit" className="btn btn-primary mb-2 com-but">+</Button>
+
+                                      </div>
+
                                 </Form>
                             </Formik>
                         </Card.Footer>
@@ -67,7 +75,7 @@ function PostCard(props) {
                 </Collapse>
             </Card>
             {modal}
-        </>
+        </div>
     )
 }
 

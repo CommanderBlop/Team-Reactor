@@ -35,11 +35,11 @@ function ShowPost() {
             }).then(function () {
                 // console.log(postsBuilder)
                 setLoading(false)
-                
+
             }).catch(function (error) {
                 alert(error)
             })
-            
+
         }
     }, [user])
 
@@ -64,7 +64,7 @@ function ShowPost() {
 
     return (
         <>
-            <p>{localDisplay}</p>
+            <p className="center-all-post">{localDisplay}</p>
             {/* <AddFriendModal id="5gd1zjFxT8a49wVFXIER3LkKfck2"/> */}
         </>
     )
