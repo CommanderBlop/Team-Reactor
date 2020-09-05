@@ -2,8 +2,12 @@ import React, {useState, useEffect, useContext} from 'react'
 import FirebaseContext from '../Firebase'
 import {useHistory, Link} from 'react-router-dom'
 import MovieFinder from './addMovie'
+import { Card, Button, Collapse,ListGroup,ListGroupItem } from 'react-bootstrap'
+import "./collection.css"
 
 const API_KEY = "7d667341"
+
+
 
 function MovieCollection() {
     //const userGenreList = ['romantic', 'adventure', 'sci-fi', 'suspense', 'anime']
@@ -28,7 +32,7 @@ function MovieCollection() {
             })
         } ,[]
     )
-    
+
     //const [userMovieList, setUserMovieList] = firetbase.db.collection("movieTester").doc("testUser")
     const [counter, setCounter] = useState(0)
     const [omdbData, setOmdbData] = useState('Loading...')
@@ -42,9 +46,9 @@ function MovieCollection() {
     useEffect(() => {
         function doFetch() {
             fetch(url)
-            .then(response => 
+            .then(response =>
                 response.json())
-            
+
             .then(data => {
                 setOmdbData(data)
             })
@@ -57,7 +61,7 @@ function MovieCollection() {
     let director
     let plot
     let img
-    
+
     //extract needed info
     if(userMovieList != ['']) {
          title = omdbData === 'Loading...' ? omdbData : omdbData.Title
@@ -71,7 +75,7 @@ function MovieCollection() {
          director = ''
          plot = ''
     }
-    
+
 
     //button right/left click handler
     function buttonClick(counterChange) {
@@ -79,33 +83,47 @@ function MovieCollection() {
             setCounter(0);
             setTriggerNext(triggerNext+1)
             setOmdbData('Loading...')
-            return 
+            return
         }
         if(counterChange < 0 && counter + counterChange < 0) {
             setCounter(userMovieList.length - 1)
             setTriggerNext(triggerNext+1)
             setOmdbData('Loading...')
-            return 
+            return
         }
         setCounter(counter + counterChange)
         setTriggerNext(triggerNext+1)
         setOmdbData('Loading...')
     }
-    
+
     return (
         <div>
-            <button onClick = {() => {history.push('/')}}>Back</button>
-            <button onClick = {() =>buttonClick(-1)}>{'<'}</button>
-            <button onClick = {() => buttonClick(1)}>{'>'}</button>
-            <button onClick = {() => {history.push('/addMovie')}}>To Search</button>
-            
-            <div>
-                <img src = {img} ></img>
-                <h1>{title}</h1>
-                <h3>{genre}</h3>
-                <h3>{director}</h3>
-                <p>{plot}</p>
-            </div>
+
+
+          <Card style={{ width: '25rem' }}  className="center-item">
+            <Card.Img variant="top" src={img} />
+
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                  <Card.Text>
+                    {genre}
+                  </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroupItem>{director}</ListGroupItem>
+              <ListGroupItem>{plot}</ListGroupItem>
+
+            </ListGroup>
+
+            <Card.Body>
+            <Button className="collection-but" onClick = {() => {history.push('/')}}>Back</Button>
+            <Button className="collection-but" onClick = {() =>buttonClick(-1)}>{'<'}</Button>
+            <Button className="collection-but" onClick = {() => buttonClick(1)}>{'>'}</Button>
+            <Button className="collection-but" onClick = {() => {history.push('/addMovie')}}>To Search</Button>
+            </Card.Body>
+          </Card>
+  
+
         </div>
     )
 }

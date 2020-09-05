@@ -4,7 +4,7 @@ import FirebaseContext from './Firebase'
 import AuthContext from './Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 function Post() {
     const firebase = useContext(FirebaseContext)
@@ -18,6 +18,13 @@ function Post() {
         }
     });
 
+    // changed part in Form
+    // <label>Movie/Seires/Show Title: </label> <br/>
+    // <Field as="input" name="title"/> <br/>
+    // <label>Content: </label><br/>
+    // <Field as="textarea" name="content"/> <br/>
+    // <button type="submit">Post</button>
+
     return (
         <>
             <Formik
@@ -25,22 +32,27 @@ function Post() {
                 onSubmit={(values) => {
                     // alert(JSON.stringify(values, 2))
                     firebase.db.collection('post').add({
-                        title: values.title, 
-                        content: values.content, 
-                        user: user.uid, 
-                        likes: 0, 
-                        comments: [], 
+                        title: values.title,
+                        content: values.content,
+                        user: user.uid,
+                        likes: 0,
+                        comments: [],
                     }).then(
                         alert("Posted!")
                     ).catch(error => alert(error))
                 }}
             >
-                <Form>
-                    <label>Movie/Seires/Show Title: </label> <br/>
-                    <Field as="input" name="title"/> <br/>
-                    <label>Content: </label><br/>
-                    <Field as="textarea" name="content"/> <br/>
-                    <button type="submit">Post</button>
+                <Form className="Post-div">
+                <div className="form-group">
+                  <label for="exampleFormControlInput1">Movie/Seires/Show Title:</label>
+                  <Field as="input" name="title" className="form-control"/>
+                </div>
+
+                <div className="form-group">
+                  <label for="exampleFormControlTextarea1">Content:</label>
+                  <Field as="textarea" name="content" className="form-control" />
+                </div>
+                <Button type="submit">Post</Button>
                 </Form>
             </Formik>
         </>

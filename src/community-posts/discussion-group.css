@@ -30,7 +30,7 @@ margin: 0 auto;
 
 
 
-form {
+.all-form {
   position: relative;
   width: 480px;
   margin: 30px auto 20px auto;
@@ -39,7 +39,7 @@ form {
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
-form textarea {
+.form-textarea {
   width: 100%;
   border: none;
   padding: 4px;
@@ -48,7 +48,7 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
-form button {
+.form-button {
   position: absolute;
   right: 18px;
   bottom: -18px;
