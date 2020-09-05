@@ -8,6 +8,7 @@ import Home from './community-posts/home'
 import MovieCollection from "./MovieCollection"
 import Login from "./Authentication/login"
 import Register from './Authentication/Register'
+import Friends from './Friends'
 
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
               <MovieCollection />
             </Route>
 
-            <Route path="/friends"></Route>
+            <Route path="/friends">
+              <Friends/>
+            </Route>
 
             <Route path="/rec"></Route>
 
