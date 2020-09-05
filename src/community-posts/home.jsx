@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect} from "react";
 import FirebaseContext from '../Firebase';
 
+import './discussion-group.css';
+
 
 import Note from "./Note";
 import CreateArea from "./CreateArea";
@@ -72,7 +74,7 @@ function Home(props) {
   }
 
   return (
-    <div>
+    <div className="dis-div">
       <h1>Movie Title</h1>
       <p>content of the community post</p>
 
