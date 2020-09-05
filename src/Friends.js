@@ -4,7 +4,7 @@ import FirebaseContext from './Firebase'
 import AuthContext from './Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
-import { Card } from 'react-bootstrap'
+import { Card, Badge } from 'react-bootstrap'
 
 function Friends() {
     const firebase = useContext(FirebaseContext)
@@ -21,7 +21,7 @@ function Friends() {
     });
 
     useEffect(() => {
-        if (user){
+        if (user) {
             let friendList
             let friendsBuilder = []
             let count = 0
@@ -32,7 +32,7 @@ function Friends() {
                     firebase.db.collection('user').doc(friend).get().then(function (doc) {
                         friendsBuilder.push(doc.data())
                         count++
-                        if (count === friendList.length){
+                        if (count === friendList.length) {
                             setLoading(false)
                         }
                     })
@@ -44,23 +44,32 @@ function Friends() {
 
     let localDisplay = 'loading...'
 
-    if (!loading){
+    if (!loading) {
         // console.log(friends)
         localDisplay = friends.map((friend, index) => {
-            return(
-                <Card>
-                    <Card.Title>{friend.name}</Card.Title>
-                    <p>{friend.insta && friend.insta}</p>
-                    <p>{friend.snap && friend.snap}</p>
-                </Card>
-            ) 
+            let genreBuilder = friend.genres.map(genre => {
+                return <Badge className="mr-1" variant="secondary">{genre}</Badge>
+            })
+            return (
+                <>
+                    <Card>
+                        <Card.Body>
+                            <h4>{friend.name}</h4>
+                            <h5>Genres: {genreBuilder}</h5>
+                            {friend.insta ? <p>Intagram: {friend.insta}</p> : <p>Insagram: N/A</p>}
+                            {friend.snap ? <p>Snapchat: {friend.snap}</p> : <p>Snapchat: N/A</p>}
+                        </Card.Body>
+                    </Card>
+                    <br />
+                </>
+            )
         })
     }
-    
+
 
     return (
         <>
-        <p>{localDisplay}</p>
+            <p>{localDisplay}</p>
         </>
     )
 }
