@@ -7,8 +7,10 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import FirebaseContext from './Firebase'
+// import FirebaseContext from './Firebase'
 import NavBar from './NavBar'
+import Login from './Authentication/login'
+import Register from './Authentication/Register'
 
 function App() {
   return (
@@ -16,6 +18,12 @@ function App() {
       <Router>
           <NavBar />
           <Switch>
+            <Route path="/login">
+              <Login/>
+            </Route>
+            <Route path="/register">
+              <Register/>
+            </Route>
             <Route path="/">
               <h1>Home Page: Team Recator</h1>
             </Route>
