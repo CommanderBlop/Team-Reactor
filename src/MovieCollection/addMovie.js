@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {useHistory, Link} from 'react-router-dom'
 import FirebaseContext from '../Firebase'
 const API_KEY = "7d667341"
@@ -71,27 +71,41 @@ function MovieFinder() {
                 genre: data.Genre,
                 plot: data.Plot,
                 resultID : data.imdbID,
-                img : data.Poster
+                img : data.Poster,
+                movieName: dataSet.movieName
             })
             console.log("finished search")})
             console.log("result:" + dataSet.searchResult)
     }
+
     const firebase = useContext(FirebaseContext)
+    const [runSubmit, setRunSubmit] = useState(0)
     function submit() {
-        var movieListFire = firebase.db.collection("movieTester").doc("testUser")
-        movieListFire.update({
-            movieID: firebase.fb.firestore.FieldValue.arrayUnion(dataSet.resultID)
-        })
-        console.log("successfully added to your list!")
+        if(dataSet != null && dataSet.response) {
+            var movieListFire = firebase.db.collection("movieTester").doc("testUser")
+            movieListFire.update({
+                movieID: firebase.fb.firestore.FieldValue.arrayUnion(dataSet.resultID)
+            })
+            console.log("successfully added to your list!")
+        }
+    }
+    useEffect(() => { submit()
+            
+    }, [runSubmit])
+
+    function enterPressed(event) {
+        var code = event.keyCode || event.which;
+        if(code === 13) { //13 is the enter keycode
+            handleSearch()
+            setRunSubmit(runSubmit + 1)
+        } 
     }
 
     return(
         <div>
-            <form>
-                <input type="text" placeholder="Add another movie" onChange = {nameInput} />
-            </form>
+            <input type="text" placeholder="Add another movie" onChange = {nameInput} style = {{width: 500, height: 100, fontSize: 50}} onKeyUp = {enterPressed}/><br/>
             <button onClick = {() => {history.push('/MovieCollection')}}>Back to collection</button>
-            <button onClick = {handleSearch}>Click to search</button>
+            <button onClick = {handleSearch}>Search</button>
             <button onClick = {submit}>Add to your collection!</button>
             <br/>
             <p style={{visibility: dataSet.response ? "visible" : "hidden"}, {textAlign: 'left'}}>

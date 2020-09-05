@@ -32,7 +32,7 @@ function NavBar() {
                         <Nav.Link as={Link} to="/rec">Daily Rec</Nav.Link>
                         <Nav.Link as={Link} to="/community">Community</Nav.Link>
                         <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
-                        <Nav.Link as={Link} to="/myCollection">My Collection</Nav.Link>
+                        <Nav.Link as={Link} to="/MovieCollection">My Collection</Nav.Link>
                         <Nav.Link as={Link} to="/post">Post</Nav.Link>
                         <Nav.Link as={Link} to="/showPost">View Posts</Nav.Link>
                     </Nav>
