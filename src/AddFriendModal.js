@@ -4,7 +4,7 @@ import FirebaseContext from './Firebase'
 import AuthContext from './Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
-import { Card, Modal, Button } from 'react-bootstrap'
+import { Card, Modal, Button, Badge } from 'react-bootstrap'
 
 function AddFriend(props) { // pass in the user's id and handleHide function
     const firebase = useContext(FirebaseContext)
@@ -45,9 +45,14 @@ function AddFriend(props) { // pass in the user's id and handleHide function
         })
     }, [])
 
+    
+
     let localDisplay
 
     if (!loading) {
+        let genreBuilder = target.genres.map(genre => {
+            return <Badge className="mr-1" variant="secondary">{genre}</Badge>
+          })
         localDisplay =
             <Modal show={show} onHide={props.handleHide}>
                 <Modal.Header closeButton>
@@ -55,8 +60,9 @@ function AddFriend(props) { // pass in the user's id and handleHide function
                 </Modal.Header>
                 <Modal.Body>
                     <h4>{target.name}</h4>
-                    Instagram: {target.insta ? <p>{target.insta}</p> : <p>N/A</p>} <br />
-                    Snapchat: {target.snap ? <p>{target.snap}</p> : <p>N/A</p>} <br />
+                    <h5>Genres: {genreBuilder}</h5>
+                    {target.insta ? <p>Intagram: {target.insta}</p> : <p>Insagram: N/A</p>}
+                    {target.snap ? <p>Snapchat: {target.snap}</p> : <p>Snapchat: N/A</p>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.handleHide} variant="light">Miss yo shot :(</Button>
