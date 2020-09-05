@@ -24,24 +24,28 @@ function Friends() {
         if (user){
             let friendList
             let friendsBuilder = []
+            let count = 0
             firebase.db.collection('user').doc(user.uid).get().then(function (doc) {
                 friendList = doc.data().friends
             }).then(function () {
                 friendList.forEach((friend, index) => {
                     firebase.db.collection('user').doc(friend).get().then(function (doc) {
                         friendsBuilder.push(doc.data())
+                        count++
+                        if (count === friendList.length){
+                            setLoading(false)
+                        }
                     })
                 })
                 setFriends(friendsBuilder)
-                setLoading(false)
-            }
-            )
+            })
         }
     }, [user])
 
     let localDisplay = 'loading...'
 
     if (!loading){
+        // console.log(friends)
         localDisplay = friends.map((friend, index) => {
             return(
                 <Card>
