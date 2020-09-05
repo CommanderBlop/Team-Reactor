@@ -29,7 +29,7 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link as={Link} to="/rec">Daily Rec</Nav.Link>
+                        <Nav.Link as={Link} to="/DailyRec">Daily Rec</Nav.Link>
                         <Nav.Link as={Link} to="/community">Community</Nav.Link>
                         <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
                         <Nav.Link as={Link} to="/MovieCollection">My Collection</Nav.Link>
