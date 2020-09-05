@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function CreateArea(props) {
   const [note, setNote] = useState({
-    title: "",
     content: ""
   });
 
@@ -19,8 +18,8 @@ function CreateArea(props) {
 
   function submitNote(event) {
     props.onAdd(note);
+    //save note
     setNote({
-      title: "",
       content: ""
     });
     event.preventDefault();
