@@ -47,6 +47,7 @@ function ShowPost() {
 
     if (!loading) {
         console.log(posts)
+        console.log(typeof posts)
         localDisplay = posts.map((post, index) => {
             return (
                 <PostCard
@@ -63,10 +64,10 @@ function ShowPost() {
 
 
     return (
-        <>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
             <p className="center-all-post">{localDisplay}</p>
             {/* <AddFriendModal id="5gd1zjFxT8a49wVFXIER3LkKfck2"/> */}
-        </>
+        </div>
     )
 }
 

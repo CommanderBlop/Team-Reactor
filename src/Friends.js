@@ -4,7 +4,7 @@ import FirebaseContext from './Firebase'
 import AuthContext from './Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
-import { Card, Badge } from 'react-bootstrap'
+import { Card, Badge, Row, Col } from 'react-bootstrap'
 
 function Friends() {
     const firebase = useContext(FirebaseContext)
@@ -68,9 +68,15 @@ function Friends() {
 
 
     return (
-        <>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
+        <Row>
+            <Col sm={2}></Col>
+            <Col sm={8}>
             <p>{localDisplay}</p>
-        </>
+            </Col>
+        </Row>
+            
+        </div>
     )
 }
 

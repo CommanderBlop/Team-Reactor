@@ -21,8 +21,8 @@ function NavBar() {
     });
 
     return (
-        <>
-            <Navbar bg="light" expand="lg">
+        <div style={{color:"#3b6978"}}>
+            <Navbar bg="dark" variant="dark" expand="lg">
                 <Navbar.Brand as={Link} to="/">
                     Reactors
                 </Navbar.Brand>
@@ -46,7 +46,7 @@ function NavBar() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-        </>
+        </div>
     )
 }
 

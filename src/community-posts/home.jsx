@@ -74,6 +74,7 @@ function Home(props) {
   }
 
   return (
+    <div style={{background:'#f5f5f5', height: "40em"}}>
     <div className="dis-div">
       <h1>Community Post</h1>
 
@@ -89,6 +90,7 @@ function Home(props) {
           />
         );
       })}
+    </div>
     </div>
   );
 }

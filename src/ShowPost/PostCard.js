@@ -33,7 +33,7 @@ function PostCard(props) {
                         <h4>{props.title}</h4>
                         <p>{props.content}</p>
                     </Card.Text>
-                    <Button onClick={() => setOpen(!open)}
+                    <Button variant="info" onClick={() => setOpen(!open)}
                         aria-expanded={open}>
                         {props.comments.length} comments
                     </Button>
@@ -62,7 +62,7 @@ function PostCard(props) {
 
                                       <div className="form-group mb-4">
                                         <Field className="form-control-plaintext com-input" as="input" placeholder="say something..." name="comment" />
-                                        <Button type="submit" className="btn btn-primary mb-2 com-but">+</Button>
+                                        <Button variant="info" type="submit" className="btn btn-primary mb-2 com-but">Comment</Button>
 
                                       </div>
 

@@ -11,7 +11,7 @@ function Register(props) {
   const history = useHistory()
 
   return (
-
+<div style={{background:'#f5f5f5', height: "40em"}}>
     <div className="register-page">
       <div className="form">
 
@@ -51,7 +51,7 @@ function Register(props) {
 
       </div>
     </div>
-
+</div>
   );
 }
 
