@@ -97,32 +97,34 @@ function MovieCollection() {
     }
 
     return (
+
         <div>
 
+                <div className="card-group center-item" style={{ width: '55rem' }}>
 
-          <Card style={{ width: '25rem' }}  className="center-item">
-            <Card.Img variant="top" src={img} />
+                  <div className="card" >
+                    <img className="card-img-top" src={img}></img>
+                  </div>
 
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                  <Card.Text>
-                    {genre}
-                  </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>{director}</ListGroupItem>
-              <ListGroupItem>{plot}</ListGroupItem>
+                  <div className="card" style={{ textAlign: 'left' }}>
+                    <div className="card-body">
 
-            </ListGroup>
+                      <h5 className="card-title">{title}</h5>
+                      <hr/>
+                      <p className="card-text">{genre}</p>
+                      <hr/>
+                      <p className="card-text">{director}</p>
+                      <hr/>
+                      <p className="card-text">{plot}</p>
+                      <hr/>
+                      <Button className="collection-but" onClick = {() => {history.push('/')}}>Back</Button>
+                      <Button className="collection-but" onClick = {() =>buttonClick(-1)}>{'<'}</Button>
+                      <Button className="collection-but" onClick = {() => buttonClick(1)}>{'>'}</Button>
+                      <Button className="collection-but" onClick = {() => {history.push('/addMovie')}}>Search</Button>
 
-            <Card.Body>
-            <Button className="collection-but" onClick = {() => {history.push('/')}}>Back</Button>
-            <Button className="collection-but" onClick = {() =>buttonClick(-1)}>{'<'}</Button>
-            <Button className="collection-but" onClick = {() => buttonClick(1)}>{'>'}</Button>
-            <Button className="collection-but" onClick = {() => {history.push('/addMovie')}}>To Search</Button>
-            </Card.Body>
-          </Card>
-  
+                    </div>
+                  </div>
+                </div>
 
         </div>
     )

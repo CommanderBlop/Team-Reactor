@@ -140,10 +140,8 @@ function MovieFinder() {
                   <Button className="collection-but" onClick={submit}>Add to your collection!</Button>
 
                 </Card.Body>
-
             </Card>
             <br />
-
                 <div className="card-group" style={{ width: dataSet.response ? "38rem" : "0rem" }}>
 
                   <div className="card" >
@@ -151,17 +149,16 @@ function MovieFinder() {
                   </div>
                   <div className="card" style={{ textAlign: 'left' }}>
                     <div className="card-body">
+
                       <h5 className="card-title">{dataSet.response && dataSet.title}</h5>
                       <p className="card-text">{dataSet.response && "Year: " + dataSet.year}</p>
                       <p className="card-text">{dataSet.response && "Length: " + dataSet.length}</p>
                       <p className="card-text">{dataSet.response && "Director: " + dataSet.director}</p>
-
                       <p className="card-text">{dataSet.response && "Genre: " + dataSet.genre}</p>
                       <p className="card-text">{dataSet.response && dataSet.plot}</p>
 
                     </div>
                   </div>
-
                 </div>
 
 
