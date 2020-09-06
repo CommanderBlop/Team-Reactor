@@ -52,7 +52,9 @@ function DailyRec(props) {
             let response = await fetch(url)
             let data = await response.json()
             console.log(data)
-            setDisplay(JSON.stringify(data, 2))
+            let processedData = data.Response === "False" ? "Still Searching..." : "Doesn't match: " + data.Title + ",  " + data.Length + "mins,  Directed by" + 
+                data.Director + ".  " + data.Plot
+            setDisplay(processedData)
             if (data.Response === "False"){
                 continue
             }
@@ -79,13 +81,13 @@ function DailyRec(props) {
             <Card.Body>
                   <Card.Title>{movieData.Title}</Card.Title>
                   <Card.Text>
-                    {"Length: " + movieData.Length}
+                    {movieData.Length === undefined? "Length: " : "Length: " + movieData.Length}
                   </Card.Text>
             </Card.Body>
             
             <ListGroup className="list-group-flush">
-              <ListGroupItem>{"Director: " +movieData.Director}</ListGroupItem>
-              <ListGroupItem>{"Plot: " +movieData.Plot}</ListGroupItem>
+              <ListGroupItem>{movieData.Director === undefined? "Director: " : "Director: " + movieData.Director}</ListGroupItem>
+              <ListGroupItem>{movieData.Plot === undefined? "Plot: " : "Plot: " + movieData.Plot}</ListGroupItem>
             </ListGroup>
           </Card>
           <br/>
