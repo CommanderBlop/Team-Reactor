@@ -5,6 +5,7 @@ import FirebaseContext from '../Firebase'
 import AuthContext from '../Firebase/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
+import {Button} from 'react-bootstrap'
 
 // import * as firebase from "firebase/app";
 // import "firebase/auth";
@@ -22,7 +23,7 @@ function Login(props) {
   // console.log(firebase.auth.currentUser)
 
   return (
-
+<div style={{background:'#f5f5f5', height: "40em"}}>
     <div className="login-page">
       <div className="form">
 
@@ -42,7 +43,7 @@ function Login(props) {
           <Form className="login-form">
             <Field as="input" type="text" placeholder="username" name="username" />
             <Field as="input" type="password" placeholder="password" name="password" />
-            <button type="submit">login</button>
+            <Button variant="info" type="submit">login</Button>
             <p className="message">Not registered? <Link to="/register">Create an account</Link></p>
           </Form>
         </Formik>
@@ -51,7 +52,7 @@ function Login(props) {
 
       </div>
     </div>
-
+</div>
 
 
   );

@@ -98,7 +98,7 @@ function MovieCollection() {
 
     return (
 
-        <div>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
 
                 <div className="card-group center-item" style={{ width: '55rem' }}>
 

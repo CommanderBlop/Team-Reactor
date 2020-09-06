@@ -49,7 +49,7 @@ function Genre() {
 
 
     return (
-        <div>
+        <div style={{background:'#f5f5f5', height: "50em"}}>
             <h3>Choose the genres you like: </h3>
             <Form id="genre">
                 {checkingField}
@@ -65,7 +65,7 @@ function Genre() {
                     }}
                 /> */}
                 {/* <Button variant="light" onClick={() => setGenres([])}>Clear</Button> <br/> */}
-                <button onClick={handleNext} disabled={!user}>Next</button>
+                <Button variant="info" onClick={handleNext} disabled={!user}>Next</Button>
             </Form>
 
         </div>

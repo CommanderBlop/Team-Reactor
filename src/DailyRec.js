@@ -71,9 +71,9 @@ function DailyRec(props) {
     }
 
     return (
-        <div>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
           {/* <h1>{movieData == undefined ? "Loading today's recommendation" : ''}</h1> */}
-          <h2>Get a movie recommendation based on your preferred genres - </h2>
+          <h2 style={{color:"#204051"}}>Get a movie recommendation based on your preferred genres - </h2>
           <Card style={{ width: '25rem' }}  className="center-item">
 
             <Card.Img variant="top" src={movieData.Poster} />
@@ -90,8 +90,8 @@ function DailyRec(props) {
               <ListGroupItem>{movieData.Plot === undefined? "Plot: " : "Plot: " + movieData.Plot}</ListGroupItem>
             </ListGroup>
           </Card>
-
-            <Button onClick={matching} disabled={loading}>Feeling lucky!</Button><br/>
+          <br/>
+            <Button onClick={matching} disabled={loading} variant="info">Feeling lucky!</Button><br/>
             <label disabled>{display}</label><br/>
             <label>Note: It might take a while to load</label>
         </div>

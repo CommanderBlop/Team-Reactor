@@ -66,7 +66,7 @@ function AddFriend(props) { // pass in the user's id and handleHide function
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.handleHide} variant="light">Miss yo shot :(</Button>
-                    <Button onClick={handleClick} disabled={!user}>Friend!</Button>
+                    <Button variant="info" onClick={handleClick} disabled={!user}>Friend!</Button>
                 </Modal.Footer>
             </Modal>
     }

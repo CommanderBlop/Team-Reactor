@@ -26,7 +26,7 @@ function Post() {
     // <button type="submit">Post</button>
 
     return (
-        <>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
             <Formik
                 initialValues={{ content: '', title: '' }}
                 onSubmit={(values) => {
@@ -44,18 +44,18 @@ function Post() {
             >
                 <Form className="Post-div">
                 <div className="form-group">
-                  <label for="exampleFormControlInput1">Movie/Seires/Show Title:</label>
+                  <h3 for="exampleFormControlInput1">Movie/Seires/Show Title:</h3>
                   <Field as="input" name="title" className="form-control"/>
                 </div>
 
                 <div className="form-group">
-                  <label for="exampleFormControlTextarea1">Content:</label>
+                  <h4 for="exampleFormControlTextarea1">Content:</h4>
                   <Field as="textarea" name="content" className="form-control" />
                 </div>
-                <Button type="submit">Post</Button>
+                <Button variant="info" type="submit">Post</Button>
                 </Form>
             </Formik>
-        </>
+        </div>
     )
 }
 

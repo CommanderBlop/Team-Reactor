@@ -125,7 +125,7 @@ function MovieFinder() {
 
 
     return (
-        <div>
+        <div style={{background:'#f5f5f5', height: "40em"}}>
             <Card className="text-center" >
                 <Card.Header>Search:</Card.Header>
 
