@@ -53,8 +53,10 @@ function PostCard(props) {
                                     // console.log('clikced')
                                     firebase.db.collection('post').doc(props.id).update({
                                         comments: firebase.fb.firestore.FieldValue.arrayUnion(values.comment + ',' + props.currentUser)
-                                    }).then(
-                                        alert("Posted!")
+                                    }).then(()=>{
+                                      alert("Posted!")
+                                      window.location.reload(false);
+                                      }
                                     ).catch(error => alert(error))
                                 }}
                             >
@@ -63,7 +65,6 @@ function PostCard(props) {
                                       <div className="form-group mb-4">
                                         <Field className="form-control-plaintext com-input" as="input" placeholder="say something..." name="comment" />
                                         <Button type="submit" className="btn btn-primary mb-2 com-but">+</Button>
-
                                       </div>
 
                                 </Form>
