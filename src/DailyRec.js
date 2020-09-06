@@ -1,61 +1,77 @@
 import React, {useState, useEffect, useContext} from 'react'
 import FirebaseContext from './Firebase'
-import { Card,ListGroup,ListGroupItem } from 'react-bootstrap'
+import { Card,ListGroup,ListGroupItem, Button } from 'react-bootstrap'
 
 const API_KEY = "7d667341"
 
 function DailyRec(props) {
-    let [movieData, setMovieData] = useState({
+    let [movieData, setMovieData] = useState({})
+    const [user, setUser] = useState()
+    const [genreList, setGenreList] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [display, setDisplay] = useState('')
+    const firebase = useContext(FirebaseContext)
 
-    })
-    console.log(props)
-    useEffect(() => {
-        async function matching() {
-            let match = false
-            console.log("enter while loop")
-            while(true) {
-                let randMovieID = ''
-                let i = 0
-                for(i = 0; i < 7; i++) {
-                    randMovieID += Math.round(Math.random() * 10).toString()
-                }
-                let url = "http://www.omdbapi.com/?i=tt" + randMovieID + "&apikey=" + API_KEY
-                let response = await fetch(url)
-                let data = await response.json()
-                console.log(data)
-                // setMovieData(
-                //     dataSet = data.Response !== "False" && data.Genre.includes(userGenre) && data
-                //     )
-
-                if(data.Response !== "False" && data.Genre.includes(props.userGenre) && data.Type === "movie") {
-                    setMovieData(
-                        data
-                    )
-                    break
-                }
-                    // .then(response =>
-                    //     response.json())
-                    // .then(data => {setMovieData({
-                    //     movieData: data.Response && data.genre.includes(userGenre) && data
-                    //     })})
-                console.log("finish one loop")
-            }
+    firebase.auth.onAuthStateChanged(user => {
+        if (user) {
+            setUser(user);
+        } else {
+            setUser(null)
         }
-        matching()
-    }, [])
-    // part that got replaced
-    // <div>
-    //     <h1>{movieData == undefined ? "Loading today's recommendation" : ''}</h1>
-    //     <img src = {movieData.Poster} ></img>
-    //     <h1>{movieData.Title}</h1>
-    //     <h3>{"Length: " + movieData.Length}</h3>
-    //     <h3>{"Director: " +movieData.Director}</h3>
-    //     <p>{"Plot: " +movieData.Plot}</p>
-    // </div>
+    });
+
+    useEffect(() => {
+        if (user){
+            firebase.db.collection('user').doc(user.uid).get().then(function(doc){
+                setGenreList(doc.data().genres)
+                setLoading(false)
+            })
+        }
+    }, [user])
+   
+    function arrayMatch(arr1, arr2){
+        let returnVal = false
+        arr1.forEach(element => {
+            if (arr2.includes(element)){
+                returnVal = true
+                return
+            }
+        })
+        return returnVal
+    }
+
+    async function matching() {
+        console.log("enter while loop")
+        while(true) {
+            let randMovieID = ''
+            let i = 0
+            for(i = 0; i < 7; i++) {
+                randMovieID += Math.round(Math.random() * 10).toString()
+            }
+            let url = "http://www.omdbapi.com/?i=tt" + randMovieID + "&apikey=" + API_KEY
+            let response = await fetch(url)
+            let data = await response.json()
+            console.log(data)
+            setDisplay(JSON.stringify(data, 2))
+            if (data.Response === "False"){
+                continue
+            }
+            let filmGenres = data.Genre.split(', ')
+            
+            console.log('fg', filmGenres)
+            if(arrayMatch(filmGenres, genreList) && data.Type !== 'episode') {
+                setMovieData(data)
+                setDisplay('FOUND!')
+                break
+            }
+            
+        }
+    }
 
     return (
         <div>
-          <h1>{movieData == undefined ? "Loading today's recommendation" : ''}</h1>
+          {/* <h1>{movieData == undefined ? "Loading today's recommendation" : ''}</h1> */}
+          <h2>Get a movie recommendation based on your preferred genres - </h2>
           <Card style={{ width: '25rem' }}  className="center-item">
 
             <Card.Img variant="top" src={movieData.Poster} />
@@ -73,6 +89,9 @@ function DailyRec(props) {
             </ListGroup>
           </Card>
 
+            <Button onClick={matching} disabled={loading}>Feeling lucky!</Button><br/>
+            <label disabled>{display}</label><br/>
+            <label>Note: It might take a while to load</label>
         </div>
     )
 }

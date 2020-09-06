@@ -56,7 +56,7 @@ function App() {
             </Route>
 
             <Route path="/DailyRec">
-              <DailyRec userGenre="family"></DailyRec>
+              <DailyRec/>
             </Route>
 
             <Route path="/community">
@@ -77,7 +77,7 @@ function App() {
 
 
             <Route path="/">
-              <h1>Home Page: Team Reactor</h1>
+              <DailyRec/>
             </Route>
 
           </Switch>
