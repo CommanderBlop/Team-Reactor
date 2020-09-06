@@ -24,7 +24,7 @@ function NavBar() {
         <div style={{color:"#3b6978"}}>
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Navbar.Brand as={Link} to="/">
-                    Reactors
+                    Filmster
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
