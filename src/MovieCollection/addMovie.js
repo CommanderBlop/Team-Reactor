@@ -135,9 +135,9 @@ function MovieFinder() {
                     <input className="form-control form-control-lg center-item" type="text" placeholder="Add another movie" onChange={nameInput} style={{ width: 500, height: 100, fontSize: 50 }} onKeyUp={enterPressed} /><br />
                   </Card.Text>
 
-                  <Button className="collection-but" onClick={() => { history.push('/MovieCollection') }}>Back to collection</Button>
-                  <Button className="collection-but" onClick={handleSearch}>Search</Button>
-                  <Button className="collection-but" onClick={submit}>Add to your collection!</Button>
+                  <Button variant="info" className="collection-but" onClick={() => { history.push('/MovieCollection') }}>Back to collection</Button>
+                  <Button variant="info" className="collection-but" onClick={handleSearch}>Search</Button>
+                  <Button variant="info" className="collection-but" onClick={submit}>Add to your collection!</Button>
 
                 </Card.Body>
             </Card>

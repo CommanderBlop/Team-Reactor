@@ -117,10 +117,10 @@ function MovieCollection() {
                       <hr/>
                       <p className="card-text">{plot}</p>
                       <hr/>
-                      <Button className="collection-but" onClick = {() => {history.push('/')}}>Back</Button>
-                      <Button className="collection-but" onClick = {() =>buttonClick(-1)}>{'<'}</Button>
-                      <Button className="collection-but" onClick = {() => buttonClick(1)}>{'>'}</Button>
-                      <Button className="collection-but" onClick = {() => {history.push('/addMovie')}}>Search</Button>
+                      <Button variant="info" className="collection-but" onClick = {() => {history.push('/')}}>Back</Button>
+                      <Button variant="info" className="collection-but" onClick = {() =>buttonClick(-1)}>{'<'}</Button>
+                      <Button variant="info" className="collection-but" onClick = {() => buttonClick(1)}>{'>'}</Button>
+                      <Button variant="info" className="collection-but" onClick = {() => {history.push('/addMovie')}}>Search</Button>
 
                     </div>
                   </div>

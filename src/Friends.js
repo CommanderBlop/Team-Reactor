@@ -69,9 +69,10 @@ function Friends() {
 
     return (
         <div style={{background:'#f5f5f5', height: "40em"}}>
+            <h3>Friends</h3>
         <Row>
-            <Col sm={2}></Col>
-            <Col sm={8}>
+            <Col sm={3}></Col>
+            <Col sm={6}>
             <p>{localDisplay}</p>
             </Col>
         </Row>
