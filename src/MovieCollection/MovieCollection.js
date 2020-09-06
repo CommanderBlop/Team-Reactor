@@ -39,7 +39,7 @@ function MovieCollection() {
 
     const [triggerNext, setTriggerNext] = useState(0)
     //let textToBeDisplayed = userGenreList[Math.round(Math.random() * userGenreList.length)]
-    let url = "http://www.omdbapi.com/?i=" + userMovieList[counter].toString() + "&apikey=" + API_KEY
+    let url = "https://www.omdbapi.com/?i=" + userMovieList[counter].toString() + "&apikey=" + API_KEY
     //console.log(url)
 
     //fetch data

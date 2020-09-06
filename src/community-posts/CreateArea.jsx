@@ -41,7 +41,7 @@ function CreateArea(props) {
           rows="3"
         />
         <br/>
-        <Button className="sub-but form-button" onClick={submitNote}>+</Button>
+        <Button variant="info" className="sub-but form-button" onClick={submitNote}>+</Button>
       </form>
     </div>
   );
