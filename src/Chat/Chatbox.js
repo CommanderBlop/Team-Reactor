@@ -11,6 +11,7 @@ function Chatbox() {
 	const [chatID, setChatID] = useState('T5O5rvqkXjOTTNzgClyK');
 	const [chats, setChats] = useState(['']);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isLoadingUserInfo, setIsLoadingUserInfo] = useState(true);
 	const [numMessage, setNumMessage] = useState(0);
 	const [allMessages, setAllMessages] = useState({});
 	const [currentUserID, setCurrentUsersID] = useState(
@@ -18,6 +19,7 @@ function Chatbox() {
 	); //change her to link it to the rest of the app
 	const [userName, setCurrentUser] = useState('');
 	const [currentFriends, setCurrentFriends] = useState(['']);
+	const [firendsID, setFriendsID] = useState(['']);
 
 	const firebase = useContext(FirebaseContext);
 	const chatMessages = firebase.db.collection('messages').doc(chatID);
@@ -27,13 +29,15 @@ function Chatbox() {
 		usersData
 			.get()
 			.then(function (doc) {
+				const data = [];
 				if (doc.exists) {
-					console.log('Data exits:', doc.data());
-					return [doc.data().name, doc.data().friends];
+					const data = [doc.data().name, doc.data().friends];
 				} else {
 					// doc.data() will be undefined in this case
+
 					console.log('No such document!');
-					return ['undefined', 'undefined'];
+				}
+				if (data !== []) {
 				}
 			})
 			.catch(function (error) {
@@ -42,11 +46,9 @@ function Chatbox() {
 	}
 
 	useEffect(() => {
-		const userData = getData(currentUserID);
-		console.log(userData);
-		setCurrentUser(userData[0]);
-		const friendID = userData[1];
-		setCurrentFriends(friendID.map((item) => getData(item)[0]));
+		setCurrentUser(getData(currentUserID)[0]);
+		setFriendsID(getData(currentUserID)[1]);
+		setCurrentFriends(firendsID.map((item) => getData(item)[0]));
 
 		chatMessages.onSnapshot(
 			function (doc) {
@@ -72,7 +74,7 @@ function Chatbox() {
 		<div>
 			<ChatBar friends={currentFriends} />
 			<hr />
-			<Title imgUrl='' userName='Jack' />
+			<Title imgUrl='' userName={isLoadingUserInfo ? 'loading...' : userName} />
 			<Scrollbars style={{ width: 800, height: 600 }}>
 				{isLoading ? (
 					<p>is loading...</p>
@@ -84,7 +86,7 @@ function Chatbox() {
 			</Scrollbars>
 			<TextBox
 				chatID={chatID}
-				user={userName}
+				user={isLoadingUserInfo ? 'loading...' : userName}
 				numMessage={numMessage}
 				allMessages={allMessages}
 			/>
