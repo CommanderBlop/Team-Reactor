@@ -1,4 +1,4 @@
-## Filmester
+## Filmster
 
 A website where you can meet other movie lovers! <br />
 Get daily movie recs, dicuss movies with others, and make friends!
