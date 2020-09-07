@@ -48,7 +48,7 @@ function DailyRec(props) {
             for(i = 0; i < 7; i++) {
                 randMovieID += Math.round(Math.random() * 10).toString()
             }
-            let url = "http://www.omdbapi.com/?i=tt" + randMovieID + "&apikey=" + API_KEY
+            let url = "https://www.omdbapi.com/?i=tt" + randMovieID + "&apikey=" + API_KEY
             let response = await fetch(url)
             let data = await response.json()
             console.log(data)

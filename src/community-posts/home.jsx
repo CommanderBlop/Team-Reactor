@@ -6,7 +6,7 @@ import './discussion-group.css';
 
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-
+import {Button} from 'react-bootstrap'
 
 
 
